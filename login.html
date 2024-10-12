@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - All Education</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #003366, #66CCFF);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: white;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+            width: 400px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #003366;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #003366;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #66CCFF;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            width: 100%;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #005f8f;
+        }
+
+        .message {
+            text-align: center;
+            margin-top: 20px;
+            color: red;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Login</h1>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="loginEmail">Email:</label>
+                <input type="email" id="loginEmail" required>
+            </div>
+            <div class="form-group">
+                <label for="loginPassword">Password:</label>
+                <input type="password" id="loginPassword" required>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <div id="loginMessage" class="message"></div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 All Education. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            const email = document.getElementById("loginEmail").value;
+            const password = document.getElementById("loginPassword").value;
+
+            // Ambil pengguna dari localStorage
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+
+            // Cek apakah pengguna terdaftar
+            const user = users.find(user => user.email === email && user.password === password);
+
+            if (user) {
+                window.location.href = `dashboard.html?email=${encodeURIComponent(email)}`; // Arahkan ke dashboard
+            } else {
+                document.getElementById("loginMessage").innerText = "Email atau password tidak valid.";
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - All Education</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #003366;
+            color: white;
+            padding: 15px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            margin-left: 20px;
+        }
+
+        .logout-btn {
+            background-color: #d9534f;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        main {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .dashboard-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            padding: 20px;
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .card-title {
+            font-size: 24px;
+            color: #003366;
+            margin-bottom: 15px;
+        }
+
+        .nav-button {
+            display: inline-block;
+            background-color: #66CCFF;
+            color: white;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .nav-button:hover {
+            background-color: #005f8f;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px 0;
+            background-color: #003366;
+            color: white;
+            margin-top: 20px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo all education.jpeg" alt="Logo All Education" class="logo" height="60">
+        <h1>Dashboard</h1>
+        <button class="logout-btn" onclick="logout()">Log Out</button>
+    </header>
+
+    <main>
+        <div class="dashboard-card">
+            <h2 class="card-title">Selamat Datang di Dashboard!</h2>
+            <p id="userInfo"></p>
+        </div>
+
+        <div class="dashboard-card">
+            <h2 class="card-title">Menu</h2>
+            <a href="jadwal_mengajar.html" class="nav-button">Jadwal Mengajar</a>
+            <a href="pendapatan.html" class="nav-button">Pendapatan</a>
+            <a href="test_kompetensi.html" class="nav-button">Test Kompetensi</a>
+            <a href="profil.html" class="nav-button">Profil</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 All Education. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const email = urlParams.get('email');
+        document.getElementById('userInfo').innerText = `Selamat datang, ${email}`;
+
+        function logout() {
+            alert("Anda telah keluar.");
+            window.location.href = "index.html"; // Kembali ke halaman login
+        }
+    </script>
+</body>
+</html>
